@@ -1,4 +1,6 @@
 ---
+import Header from "../components/Header.astro";
+
 interface Props {
   title: string;
 }
@@ -17,10 +19,27 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    <Header />
+
     <slot />
   </body>
 </html>
 <style is:global>
+  @font-face {
+    font-family: "Outfit";
+    src: url("/fonts/Outfit-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Outfit";
+    src: url("/fonts/Outfit-Medium.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
   :root {
     --accent: 136, 58, 234;
     --accent-light: 224, 204, 250;
@@ -31,21 +50,15 @@ const { title } = Astro.props;
       rgb(var(--accent-light)) 30%,
       white 60%
     );
+
+    --background: 251, 250, 252;
+    --background-lifted: 255, 255, 255;
+    --foreground: 0, 0, 0;
+    --forground-deemphasized: 128, 128, 128;
   }
   html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-    background-size: 224px;
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
+    font-family: "Outfit", system-ui, sans-serif;
+    color: rgb(var(--foreground));
+    background-color: rgb(var(--background));
   }
 </style>
