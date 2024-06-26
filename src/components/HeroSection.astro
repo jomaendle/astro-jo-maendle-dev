@@ -1,5 +1,48 @@
 ---
+import Button from "./ui/Button.astro";
+import Card from "./ui/Card.astro";
 
+const items = [
+  {
+    title: "Web Development",
+    subtitle: "Web development is",
+  },
+  {
+    title: "Web Development",
+    subtitle: "Web development is",
+  },
+  {
+    title: "Web Development",
+    subtitle: "Web development is",
+  },
+];
 ---
 
-<h1 class="font-bold text-4xl">Building for the web.</h1>
+<div class="flex flex-col gap-16">
+  <h1 class="font-medium text-4xl">
+    Building for the web. <br />
+  </h1>
+
+  <div>
+    <Button size="medium" variant="secondary"> Get started </Button>
+  </div>
+</div>
+
+<div class="flex flex-col gap-8">
+  <h2 class="font-medium text-xl">How I Can Help You</h2>
+
+  <div class="md:flex gap-12 grid grid-cols-2">
+    {
+      items.map((i) => {
+        return (
+          <Card title={i.title} subtitle={i.subtitle}>
+            <a href="#" class="text-blue-500">
+              Learn more
+            </a>{" "}
+            &rarr;
+          </Card>
+        );
+      })
+    }
+  </div>
+</div>

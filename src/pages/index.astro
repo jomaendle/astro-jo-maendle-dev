@@ -1,8 +1,13 @@
 ---
-import HeroSection from "../components/HeroSection.astro";
-import Layout from "../layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import HeroSection from "@components/HeroSection.astro";
+import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <HeroSection />
+  <div class="flex flex-col gap-20 px-8">
+    <Header />
+
+    <HeroSection />
+  </div>
 </Layout>
