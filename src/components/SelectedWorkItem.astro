@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import Button from "./ui/Button.astro";
+import InfoItem from "./ui/InfoItem.astro";
+
+interface Props {
+  item: CollectionEntry<"projects">;
+}
+
+const { item } = Astro.props;
+
+function getMonthAndYear(date: string | undefined) {
+  if (!date) {
+    return null;
+  }
+
+  const d = new Date(date);
+  return (
+    d.toLocaleString("default", { month: "short" }) + " " + d.getFullYear()
+  );
+}
+---
+
+<div class="flex flex-col gap-12">
+  <div class="md:p-12 p-6 rounded-xl bg-white flex flex-col gap-12 w-full">
+    <header class="w-full flex flex-col sm:flex-row gap-4">
+      <div class="flex-1">
+        <Image
+          src={item.data.logoImage}
+          alt={item.data.title}
+          class="h-12 w-auto object-contain"
+        />
+      </div>
+
+      <p class="text-secondary mt-2">
+        {getMonthAndYear(item.data.startDate)} -{" "}
+        {getMonthAndYear(item.data.endDate) ?? "Present"}
+      </p>
+    </header>
+    <div class="flex flex-col gap-2">
+      <h2 class="md:text-5xl text-3xl font-extrabold mt-4">
+        {item.data.title}
+      </h2>
+      <p class="md:text-xl mt-2 sm:max-w-[580px] text-pretty">
+        {item.data.description}
+      </p>
+    </div>
+    <main class="flex flex-col">
+      <Image
+        src={item.data.coverImage}
+        alt={item.data.title}
+        class="w-full object-contain rounded-xl"
+      />
+    </main>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
+    <div class="col-span-2">
+      <InfoItem title="About" subtitle={item.data.aboutCompany ?? ""} />
+    </div>
+    <InfoItem title="Role" subtitle={item.data.role} />
+    <InfoItem title="Tech">
+      <ol class="flex flex-col">
+        {item.data.techStack.map((tech) => <li class="list-none ">{tech}</li>)}
+      </ol>
+    </InfoItem>
+  </div>
+
+  {
+    item.data.projectLink && (
+      <div>
+        <a target="_blank" href={item.data.projectLink}>
+          <Button size="medium" variant="secondary">
+            Open
+          </Button>
+        </a>
+      </div>
+    )
+  }
+</div>
