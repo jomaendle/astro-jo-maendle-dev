@@ -1,11 +1,75 @@
 ---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import Button from "./ui/Button.astro";
+import InfoItem from "./ui/InfoItem.astro";
 import SectionTitle from "./ui/SectionTitle.astro";
 
-const workItems = [
-  {
-    title: "Jo Maendle Photography",
-  },
-];
+const workItems = await getCollection("projects");
+type WorkItem = (typeof workItems)[0];
 ---
 
 <SectionTitle> Selected Work </SectionTitle>
+
+<div>
+  {
+    workItems.map((i: WorkItem) => (
+      <div class="flex flex-col gap-12">
+        <div class="md:p-12 p-6 rounded-xl bg-white flex flex-col gap-12 w-full">
+          <header class="w-full flex flex-col sm:flex-row gap-4">
+            <div class="flex-1">
+              <Image
+                src={i.data.logoImage}
+                alt={i.data.title}
+                class="h-12 w-auto object-contain"
+              />
+            </div>
+
+            <p class="text-secondary mt-2">
+              {i.data.startDate} - {i.data.endDate ?? "Present"}
+            </p>
+          </header>
+          <div class="flex flex-col gap-2">
+            <h2 class="md:text-5xl text-3xl font-extrabold mt-4">
+              {i.data.title}
+            </h2>
+            <p class="md:text-xl mt-2 sm:max-w-[580px] text-pretty">
+              {i.data.description}
+            </p>
+          </div>
+          <main class="flex flex-col">
+            <Image
+              src={i.data.coverImage}
+              alt={i.data.title}
+              class="h-[450px] w-full object-contain rounded-xl"
+            />
+          </main>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div class="col-span-2">
+            <InfoItem title="About" subtitle={i.data.aboutCompany ?? ""} />
+          </div>
+          <InfoItem title="Role" subtitle={i.data.role} />
+          <InfoItem title="Tech">
+            <ol class="flex flex-col">
+              {i.data.techStack.map((tech) => (
+                <li class="list-none ">{tech}</li>
+              ))}
+            </ol>
+          </InfoItem>
+        </div>
+
+        {i.data.projectLink && (
+          <div>
+            <a target="_blank" href={i.data.projectLink}>
+              <Button size="medium" variant="secondary">
+                Open
+              </Button>
+            </a>
+          </div>
+        )}
+      </div>
+    ))
+  }
+</div>
