@@ -1,9 +1,14 @@
 ---
-
+import { Image } from "astro:assets";
+import me from "../assets/jo.jpg";
 ---
 
 <header class="flex gap-4 items-center py-6">
-  <div class="bg-gray-300 rounded-full h-12 w-12"></div>
+  <Image
+    class="bg-gray-300 rounded-full h-12 w-12"
+    src={me}
+    alt="Johannes Maendle"
+  />
   <p class="flex gap-4">
     <span class="font-bold">Johannes Maendle</span>
     <span class="text-secondary">Bremen, DE</span>
