@@ -1,0 +1,39 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<theme-toggle class="flex gap-4">
+  <Icon name="clarity:moon-solid" id="light" class="invisible" />
+  <Icon name="clarity:sun-solid" id="dark" class="invisible" />
+</theme-toggle>
+
+<script>
+  class ThemeToggle extends HTMLElement {
+    constructor() {
+      super();
+
+      const lightIcon = this.querySelector("#light");
+      const darkIcon = this.querySelector("#dark");
+
+      if (document.documentElement.classList.contains("dark")) {
+        darkIcon?.classList.remove("invisible");
+      } else {
+        lightIcon?.classList.remove("invisible");
+      }
+
+      this.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+
+        if (document.documentElement.classList.contains("dark")) {
+          this.querySelector("#dark")?.classList.remove("invisible");
+          this.querySelector("#light")?.classList.add("invisible");
+        } else {
+          this.querySelector("#light")?.classList.remove("invisible");
+          this.querySelector("#dark")?.classList.add("invisible");
+        }
+      });
+    }
+  }
+
+  customElements.define("theme-toggle", ThemeToggle);
+</script>
