@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl } from "@i18n/utils";
+import { ViewTransitions } from "astro:transitions";
 interface Props {
   title: string;
 }
@@ -18,46 +19,46 @@ const lang = getLangFromUrl(Astro.url);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <ViewTransitions />
   </head>
   <body>
     <slot />
+    <style is:global>
+      @font-face {
+        font-family: "Outfit";
+        src: url("/fonts/Outfit-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Outfit";
+        src: url("/fonts/Outfit-Medium.woff2") format("woff2");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      :root {
+        --background: 245, 247, 250;
+        --background-lifted: 255, 255, 255;
+        --foreground: 0, 0, 0;
+        --forground-deemphasized: 128, 129, 132;
+      }
+      html {
+        font-family: "Outfit", system-ui, sans-serif;
+        color: rgb(var(--foreground));
+        background-color: rgb(var(--background));
+        transition: all 0.2s ease-in-out;
+
+        &.dark {
+          --background: 0, 0, 0;
+          --background-lifted: 21, 21, 21;
+          --foreground: 255, 255, 255;
+          --forground-deemphasized: 179, 179, 179;
+        }
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  @font-face {
-    font-family: "Outfit";
-    src: url("/fonts/Outfit-Regular.woff2") format("woff2");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Outfit";
-    src: url("/fonts/Outfit-Medium.woff2") format("woff2");
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-
-    --background: 245, 247, 250;
-    --background-lifted: 255, 255, 255;
-    --foreground: 0, 0, 0;
-    --forground-deemphasized: 128, 128, 128;
-  }
-  html {
-    font-family: "Outfit", system-ui, sans-serif;
-    color: rgb(var(--foreground));
-    background-color: rgb(var(--background));
-  }
-</style>

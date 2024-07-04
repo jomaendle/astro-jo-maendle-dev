@@ -1,10 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
+import Button from "./ui/Button.astro";
 ---
 
-<theme-toggle class="flex gap-4">
-  <Icon name="clarity:moon-solid" id="light" class="invisible" />
-  <Icon name="clarity:sun-solid" id="dark" class="invisible" />
+<theme-toggle class="flex gap-4 relative">
+  <Button variant="icon" size="medium" class="cursor-pointer">
+    <Icon name="clarity:moon-solid" id="light" class="invisible" />
+  </Button>
+
+  <Button variant="icon" size="medium" class="cursor-pointer absolute">
+    <Icon name="clarity:sun-solid" id="dark" class="invisible" />
+  </Button>
 </theme-toggle>
 
 <script>
@@ -12,26 +18,36 @@ import { Icon } from "astro-icon/components";
     constructor() {
       super();
 
+      const prefersDarkScheme =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      this.setTheme(prefersDarkScheme);
+
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          this.setTheme(e.matches);
+        });
+
+      this.addEventListener("click", () => {
+        this.setTheme(!document.documentElement.classList.contains("dark"));
+      });
+    }
+
+    setTheme(useDark: boolean) {
       const lightIcon = this.querySelector("#light");
       const darkIcon = this.querySelector("#dark");
 
-      if (document.documentElement.classList.contains("dark")) {
+      if (useDark) {
         darkIcon?.classList.remove("invisible");
+        lightIcon?.classList.add("invisible");
+        document.documentElement.classList.add("dark");
       } else {
         lightIcon?.classList.remove("invisible");
+        darkIcon?.classList.add("invisible");
+        document.documentElement.classList.remove("dark");
       }
-
-      this.addEventListener("click", () => {
-        document.documentElement.classList.toggle("dark");
-
-        if (document.documentElement.classList.contains("dark")) {
-          this.querySelector("#dark")?.classList.remove("invisible");
-          this.querySelector("#light")?.classList.add("invisible");
-        } else {
-          this.querySelector("#light")?.classList.remove("invisible");
-          this.querySelector("#dark")?.classList.add("invisible");
-        }
-      });
     }
   }
 
