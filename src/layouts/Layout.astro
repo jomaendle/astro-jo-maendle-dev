@@ -43,6 +43,7 @@ const lang = getLangFromUrl(Astro.url);
       :root {
         --background: 245, 247, 250;
         --background-lifted: 255, 255, 255;
+        --background-lifted-emphasized: 235, 235, 235;
         --foreground: 0, 0, 0;
         --forground-deemphasized: 128, 129, 132;
       }
@@ -55,6 +56,7 @@ const lang = getLangFromUrl(Astro.url);
         &.dark {
           --background: 0, 0, 0;
           --background-lifted: 21, 21, 21;
+          --background-lifted-emphasized: 42, 42, 42;
           --foreground: 255, 255, 255;
           --forground-deemphasized: 179, 179, 179;
         }

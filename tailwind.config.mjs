@@ -8,6 +8,7 @@ export default {
         foreground: "rgb(var(--foreground))",
         background: "rgb(var(--background))",
         backgroundLifted: "rgb(var(--background-lifted))",
+        backgroundLiftedEmphasized: "rgb(var(--background-lifted-emphasized))",
         secondary: "rgb(var(--forground-deemphasized))",
       },
     },

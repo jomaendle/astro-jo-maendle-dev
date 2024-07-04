@@ -1,0 +1,39 @@
+---
+import SectionTitle from "@components/ui/SectionTitle.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+
+function getLocalDate(date: string) {
+  const d = new Date(date);
+  return d.toLocaleDateString("default", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+---
+
+<div class="flex flex-col gap-8">
+  <SectionTitle showDivider={true}> Writing </SectionTitle>
+
+  <div class="flex flex-col lg:grid grid-cols-2 pb-12 gap-4">
+    {
+      posts.map((post) => (
+        <a
+          href={post.data.link}
+          target="_blank"
+          class="flex flex-col gap-3 p-4 rounded-md bg-backgroundLifted hover:bg-backgroundLiftedEmphasized transition-colors duration-200 ease-in-out"
+        >
+          <h2 class="text-2xl leading-9 font-extrabold flex-1 line-clamp-2">
+            {post.data.title}
+          </h2>
+          <div class="flex text-secondary">
+            <p class="flex-1">{post.data.platform}</p>
+            <p class="">{getLocalDate(post.data.date)}</p>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</div>
