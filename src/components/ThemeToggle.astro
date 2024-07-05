@@ -18,11 +18,15 @@ import Button from "./ui/Button.astro";
     constructor() {
       super();
 
+      const themeFromStorage = localStorage.getItem("theme");
+
       const prefersDarkScheme =
         window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-      this.setTheme(prefersDarkScheme);
+      this.setTheme(
+        themeFromStorage ? themeFromStorage === "dark" : prefersDarkScheme
+      );
 
       window
         .matchMedia("(prefers-color-scheme: dark)")
@@ -38,6 +42,7 @@ import Button from "./ui/Button.astro";
     setTheme(useDark: boolean) {
       const lightIcon = this.querySelector("#light");
       const darkIcon = this.querySelector("#dark");
+      localStorage.setItem("theme", useDark ? "dark" : "light");
 
       if (useDark) {
         darkIcon?.classList.remove("invisible");

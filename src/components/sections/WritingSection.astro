@@ -7,7 +7,7 @@ const posts = await getCollection("blog");
 function getLocalDate(date: string) {
   const d = new Date(date);
   return d.toLocaleDateString("default", {
-    month: "long",
+    month: "short",
     day: "numeric",
     year: "numeric",
   });
@@ -17,20 +17,20 @@ function getLocalDate(date: string) {
 <div class="flex flex-col gap-8">
   <SectionTitle showDivider={true}> Writing </SectionTitle>
 
-  <div class="flex flex-col lg:grid grid-cols-2 pb-12 gap-4">
+  <div class="flex flex-col lg:grid grid-cols-2 gap-4 lg:gap-6">
     {
       posts.map((post) => (
         <a
           href={post.data.link}
           target="_blank"
-          class="flex flex-col gap-3 p-4 rounded-md bg-backgroundLifted hover:bg-backgroundLiftedEmphasized transition-colors duration-200 ease-in-out"
+          class="flex flex-col gap-3 p-4 rounded-xl bg-backgroundLifted hover:scale-[1.01] transition-all hover:shadow-lg"
         >
-          <h2 class="text-2xl leading-9 font-extrabold flex-1 line-clamp-2">
+          <h2 class="text-xl leading-7 font-extrabold flex-1 line-clamp-2">
             {post.data.title}
           </h2>
           <div class="flex text-secondary">
             <p class="flex-1">{post.data.platform}</p>
-            <p class="">{getLocalDate(post.data.date)}</p>
+            <p class="text-sm">{getLocalDate(post.data.date)}</p>
           </div>
         </a>
       ))
