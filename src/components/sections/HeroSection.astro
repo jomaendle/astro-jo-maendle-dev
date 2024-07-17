@@ -1,4 +1,5 @@
 ---
+import DotBackground from "@components/ui/DotBackground.astro";
 import Button from "../ui/Button.astro";
 import Card from "../ui/Card.astro";
 import SectionTitle from "../ui/SectionTitle.astro";
@@ -19,20 +20,32 @@ const items = [
 ];
 ---
 
-<div class="flex flex-col gap-16">
-  <h1 class="font-bold text-4xl">
-    Building for the web. <br />
-  </h1>
+<DotBackground />
+<div class="flex flex-col gap-12 max-w-2xl">
+  <div class="flex flex-col gap-4">
+    <h1 class="font-medium text-[40px] leading-[44px]">
+      Enterprise-grade web development for your business.
+    </h1>
 
-  <div>
-    <Button size="medium" variant="secondary"> Get started </Button>
+    <p class="">
+      Expert in developing large-scale, responsive enterprise applications using
+      Angular and NX. Focused on delivering high-performance, accessible
+      solutions with outstanding user experience.
+    </p>
+  </div>
+
+  <div class="flex gap-4">
+    <Button size="medium" variant="secondary"> Work Together </Button>
+    <Button size="medium" variant="tertiary"> Get in contact </Button>
   </div>
 </div>
 
-<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-6 mt-20 md:mt-28">
   <SectionTitle>How I Can Help You</SectionTitle>
 
-  <div class="md:flex md:gap-8 gap-4 grid grid-cols-2">
+  <div
+    class="md:flex sm:gap-8 gap-4 flex flex-col md:flex-row sm:grid grid-cols-2"
+  >
     {
       items.map((i) => {
         return (

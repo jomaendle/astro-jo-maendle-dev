@@ -7,9 +7,11 @@ export default {
       colors: {
         foreground: "rgb(var(--foreground))",
         background: "rgb(var(--background))",
-        backgroundLifted: "rgb(var(--background-lifted))",
+        backgroundLifted: "rgba(var(--background-lifted))",
         backgroundLiftedEmphasized: "rgb(var(--background-lifted-emphasized))",
         secondary: "rgb(var(--forground-deemphasized))",
+        border: "rgba(255,255,255,0.3)",
+        dot: "rgba(66,66,66,1)",
       },
     },
   },

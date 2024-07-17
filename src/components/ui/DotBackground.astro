@@ -1,0 +1,26 @@
+---
+const dots = Array.from({ length: 600 }, (_, i) => i);
+---
+
+<div class="absolute -z-[1] flex flex-wrap gap-10 w-full -top-[80px]">
+  <div
+    class="h-[200px] w-full bg-gradient-to-t from-transparent to-background absolute z-10"
+  >
+  </div>
+  {
+    dots.map((_, i) => (
+      <div
+        class="bg-dot rounded-full h-[2px] w-[2px]"
+        style={{
+          top: `${Math.random() * 100}%`,
+          left: `${Math.random() * 100}%`,
+        }}
+      />
+    ))
+  }
+
+  <div
+    class="h-[300px] w-full bg-gradient-to-b bottom-0 from-transparent to-background absolute z-10"
+  >
+  </div>
+</div>

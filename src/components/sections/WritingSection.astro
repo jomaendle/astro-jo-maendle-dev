@@ -1,4 +1,5 @@
 ---
+import DotBackground from "@components/ui/DotBackground.astro";
 import SectionTitle from "@components/ui/SectionTitle.astro";
 import { getCollection } from "astro:content";
 
@@ -14,8 +15,11 @@ function getLocalDate(date: string) {
 }
 ---
 
-<div class="flex flex-col gap-8">
-  <SectionTitle showDivider={true}> Writing </SectionTitle>
+<div class="flex flex-col gap-8 relative">
+  <div class="relative -top-[40px]">
+    <DotBackground />
+  </div>
+  <SectionTitle> Writing </SectionTitle>
 
   <div class="flex flex-col lg:grid grid-cols-2 gap-4 lg:gap-6">
     {
@@ -23,7 +27,7 @@ function getLocalDate(date: string) {
         <a
           href={post.data.link}
           target="_blank"
-          class="flex flex-col gap-3 p-4 rounded-xl bg-backgroundLifted hover:scale-[1.01] transition-all hover:shadow-lg"
+          class="flex flex-col gap-3 p-4 rounded-sm border border-border bg-backgroundLifted hover:border-white/50 transition-all"
         >
           <h2 class="text-xl leading-7 font-extrabold flex-1 line-clamp-2">
             {post.data.title}

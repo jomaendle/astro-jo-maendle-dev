@@ -1,14 +1,15 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import Button from "./ui/Button.astro";
 import InfoItem from "./ui/InfoItem.astro";
 
-interface Props {
+interface Props extends HTMLAttributes<"div"> {
   item: CollectionEntry<"projects">;
 }
 
-const { item } = Astro.props;
+const { item, ...props } = Astro.props;
 
 function getMonthAndYear(date: string | undefined) {
   if (!date) {
@@ -22,9 +23,9 @@ function getMonthAndYear(date: string | undefined) {
 }
 ---
 
-<div class="flex flex-col gap-12">
+<div class="flex flex-col gap-12" {...props}>
   <div
-    class="md:p-12 p-6 rounded-xl bg-backgroundLifted flex flex-col gap-12 w-full"
+    class="md:p-12 p-6 rounded-sm bg-backgroundLifted backdrop-blur-[3px] border border-border flex flex-col gap-12 w-full"
   >
     <header class="w-full flex flex-col sm:flex-row gap-4">
       <div class="flex-1">
@@ -55,29 +56,33 @@ function getMonthAndYear(date: string | undefined) {
         class="w-full object-contain rounded-xl"
       />
     </main>
-  </div>
 
-  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
-    <div class="col-span-2">
-      <InfoItem title="About" subtitle={item.data.aboutCompany ?? ""} />
-    </div>
-    <InfoItem title="Role" subtitle={item.data.role} />
-    <InfoItem title="Tech">
-      <ol class="flex flex-col">
-        {item.data.techStack.map((tech) => <li class="list-none ">{tech}</li>)}
-      </ol>
-    </InfoItem>
-  </div>
-
-  {
-    item.data.projectLink && (
-      <div>
-        <a target="_blank" href={item.data.projectLink}>
-          <Button size="medium" variant="secondary">
-            Open
-          </Button>
-        </a>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div class="col-span-2">
+        <InfoItem title="About" subtitle={item.data.aboutCompany ?? ""} />
       </div>
-    )
-  }
+      <InfoItem title="Role" subtitle={item.data.role} />
+      <InfoItem title="Tech">
+        <ol class="flex flex-col">
+          {
+            item.data.techStack.map((tech) => (
+              <li class="list-none ">{tech}</li>
+            ))
+          }
+        </ol>
+      </InfoItem>
+    </div>
+
+    {
+      item.data.projectLink && (
+        <div class="flex w-full">
+          <a target="_blank" href={item.data.projectLink} class="w-full">
+            <Button size="medium" variant="tertiary" class="w-full sm:w-auto">
+              Open
+            </Button>
+          </a>
+        </div>
+      )
+    }
+  </div>
 </div>

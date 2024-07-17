@@ -7,16 +7,40 @@ import WritingSection from "@components/sections/WritingSection.astro";
 import Layout from "@layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-  <div class="flex flex-col gap-20 md:gap-28 px-8 md:max-w-6xl mx-auto">
-    <Header />
+<Layout title="Johannes Maendle - Fullstack JavaScript Developer">
+  <div
+    style={{
+      backgroundImage:
+        "radial-gradient(circle at 0 0, rgb(var(--bg-radial-color-1)), rgba(182, 89, 255, 0) 14%)",
+    }}
+  >
+    <div
+      class="flex flex-col gap-20 md:gap-32 px-4 sm:px-8 md:max-w-6xl mx-auto"
+    >
+      <Header />
 
-    <HeroSection />
+      <div class="relative">
+        <HeroSection />
+      </div>
+    </div>
 
-    <SelectedWorkSection />
+    <div
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 50% 50%, rgb(var(--bg-radial-color-2)), rgba(182, 89, 255, 0) 50%)",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+      }}
+    >
+      <div
+        class="flex flex-col gap-20 md:gap-32 px-4 sm:px-8 md:max-w-6xl mx-auto mt-32"
+      >
+        <SelectedWorkSection />
 
-    <WritingSection />
+        <WritingSection />
 
-    <ContactSection />
+        <ContactSection />
+      </div>
+    </div>
   </div>
 </Layout>

@@ -19,9 +19,21 @@ function getMonthAndYear(date: string | undefined) {
 ---
 
 <div class="flex flex-col gap-8">
-  <SectionTitle showDivider={true}> Selected Work </SectionTitle>
+  <SectionTitle> Selected Work </SectionTitle>
 
   <div class="flex flex-col gap-32">
-    {workItems.map((i: WorkItem) => <SelectedWorkItem item={i} />)}
+    {
+      workItems.map((i: WorkItem) => (
+        <SelectedWorkItem
+          item={i}
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 100% 100%, rgb(var(--bg-radial-color-1)), rgba(182, 89, 255, 0) 50%)",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        />
+      ))
+    }
   </div>
 </div>

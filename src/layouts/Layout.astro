@@ -10,7 +10,7 @@ const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class="dark">
   <head>
     <meta charset="UTF-8" />
 
@@ -46,6 +46,9 @@ const lang = getLangFromUrl(Astro.url);
         --background-lifted-emphasized: 235, 235, 235;
         --foreground: 0, 0, 0;
         --forground-deemphasized: 128, 129, 132;
+
+        --bg-radial-color-1: 0 75 221 / 37%;
+        --bg-radial-color-2: 119 20 151 / 32%;
       }
       html {
         font-family: "Outfit", system-ui, sans-serif;
@@ -54,11 +57,11 @@ const lang = getLangFromUrl(Astro.url);
         transition: all 0.2s ease-in-out;
 
         &.dark {
-          --background: 0, 0, 0;
-          --background-lifted: 21, 21, 21;
+          --background: 27, 27, 27;
+          --background-lifted: 12, 12, 12, 0.4;
           --background-lifted-emphasized: 42, 42, 42;
           --foreground: 255, 255, 255;
-          --forground-deemphasized: 179, 179, 179;
+          --forground-deemphasized: 180, 180, 180;
         }
       }
     </style>
