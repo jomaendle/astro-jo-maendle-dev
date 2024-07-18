@@ -1,9 +1,15 @@
 ---
+interface Props {
+  classes?: string;
+}
+
+const { classes } = Astro.props;
+
 const dots = Array.from({ length: 600 }, (_, i) => i);
 ---
 
 <div
-  class="absolute -z-[1] flex flex-wrap gap-10 w-full -top-[80px] max-h-[1200px] md:max-h-[1200px] left-4 lg:max-h-[880px] overflow-hidden"
+  class={`absolute -z-[1] flex flex-wrap gap-10 w-full left-4 overflow-hidden ${classes}`}
 >
   <div
     class="h-[200px] w-full bg-gradient-to-t from-transparent to-background absolute z-10"

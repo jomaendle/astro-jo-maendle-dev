@@ -15,15 +15,16 @@ function getLocalDate(date: string) {
 }
 ---
 
-<div class="flex flex-col gap-8 relative">
-  <div class="relative -top-[40px] overflow-hidden">
-    <DotBackground />
+<writing-section class="flex flex-col gap-8 relative">
+  <div class="relative">
+    <DotBackground classes="-top-[120px]" />
   </div>
+
   <SectionTitle> Writing </SectionTitle>
 
   <div class="flex flex-col lg:grid grid-cols-2 gap-4 lg:gap-6">
     {
-      posts.map((post) => (
+      posts.slice(0, 4).map((post) => (
         <a
           href={post.data.link}
           target="_blank"
@@ -40,4 +41,17 @@ function getLocalDate(date: string) {
       ))
     }
   </div>
-</div>
+</writing-section>
+
+<script>
+  class WritingSection extends HTMLElement {
+    constructor() {
+      super();
+
+      const dotBg = this.children[0].children[0];
+      dotBg.style.height = this.clientHeight + this.clientHeight * 0.3 + "px";
+    }
+  }
+
+  customElements.define("writing-section", WritingSection);
+</script>

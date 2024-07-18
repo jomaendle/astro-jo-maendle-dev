@@ -2,13 +2,30 @@
 
 ---
 
+<style>
+  .fade-in {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      transform: translateY(-50%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
+
 <header class="flex flex-col sm:flex-row gap-4 items-center py-6">
   <p class="flex flex-1 gap-4">
     <span class="text-xl">Johannes Maendle</span>
   </p>
 
   <div id="persist-menu"></div>
-  <nav id="menu" class="flex items-center sm:gap-6 gap-10">
+  <nav id="menu" class="flex items-center sm:gap-6 gap-10 transition-none">
     <a href="#work">Work</a>
     <a href="#articles">Articles</a>
     <a href="#contact">Contact</a>
@@ -16,24 +33,30 @@
 </header>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // detectt the user scroll.
-    // if the scrolly is greater than 100, add a class to the nav item
-    // if the scrolly is less than 100, remove the class from the nav item
-
-    window.addEventListener("scroll", function () {
+  document.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener("scroll", () => {
+      const isMobile = window.matchMedia("(max-width: 640px)").matches;
       const nav = document.querySelector("nav#menu");
-      const persistMenu = document.querySelector("div#persist-menu");
+      const persistMenu = document.querySelector(
+        "div#persist-menu"
+      ) as HTMLDivElement | null;
       const classes: string[] = [
         "p-4",
         "fixed",
-        "top-0",
-        "bg-black/50",
-        "backdrop-blur-md",
+        "top-8",
+        "bg-black/60",
+        "backdrop-blur-lg",
         "z-50",
-        "w-full",
+        "w-[calc(100%-4rem)]",
         "justify-center",
+        "rounded-full",
+        "fade-in",
+        "border",
+        "border-border",
       ];
+
+      if (!persistMenu || !nav || !isMobile) return;
+
       if (window.scrollY > 200) {
         persistMenu.style.height = `${nav.clientHeight}px`;
         nav.classList.add(...classes);
