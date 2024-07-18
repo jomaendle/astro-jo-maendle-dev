@@ -48,7 +48,10 @@ function getLocalDate(date: string) {
     constructor() {
       super();
 
-      const dotBg = this.children[0].children[0];
+      const dotBg = this.children[0].children[0] as HTMLElement | null;
+
+      if (!dotBg) return;
+
       dotBg.style.height = this.clientHeight + this.clientHeight * 0.3 + "px";
     }
   }
