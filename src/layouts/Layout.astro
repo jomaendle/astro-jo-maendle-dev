@@ -64,6 +64,10 @@ const lang = getLangFromUrl(Astro.url);
           --forground-deemphasized: 180, 180, 180;
         }
       }
+
+      .transparent-card {
+        @apply rounded-sm border backdrop-blur-[3px] border-border bg-backgroundLifted hover:border-borderHover transition-all;
+      }
     </style>
   </body>
 </html>

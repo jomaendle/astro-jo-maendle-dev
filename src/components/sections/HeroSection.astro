@@ -6,35 +6,38 @@ import SectionTitle from "../ui/SectionTitle.astro";
 
 const items = [
   {
-    title: "Web Development",
-    subtitle: "Web development is",
+    title: "Custom Web App Development",
+    subtitle: "Angular, React, and more",
   },
   {
-    title: "Web Development",
-    subtitle: "Web development is",
+    title: "User Experience Enhancement",
+    subtitle: "Elevate your UX",
   },
   {
-    title: "Web Development",
-    subtitle: "Web development is",
+    title: "Collaborative Development",
+    subtitle: "Working with your team",
   },
 ];
 ---
 
 <DotBackground />
 <div class="flex flex-col gap-12 max-w-2xl">
-  <div class="flex flex-col gap-4">
-    <h1 class="font-medium text-[40px] leading-[44px]">
-      Enterprise-grade web development for your business.
+  <div class="flex flex-col gap-4 text-center md:text-left">
+    <h1
+      class="font-medium text-[40px] leading-[44px] max-w-[400px] md:max-w-none mx-auto md:mx-0"
+    >
+      JS-powered
+      <span class="text-blue-500/80 whitespace-nowrap"> Full-Stack </span>
+      Engineering
     </h1>
 
-    <p class="">
-      Expert in developing large-scale, responsive enterprise applications using
-      Angular and NX. Focused on delivering high-performance, accessible
-      solutions with outstanding user experience.
+    <p class="max-w-[400px] mx-auto md:max-w-none md:mx-0">
+      Creating seamless, scalable, and user-driven applications for modern
+      businesses.
     </p>
   </div>
 
-  <div class="flex gap-4">
+  <div class="flex gap-4 justify-center md:justify-start">
     <Button size="medium" variant="secondary"> Work Together </Button>
     <Button size="medium" variant="tertiary"> Get in contact </Button>
   </div>
@@ -44,7 +47,7 @@ const items = [
   <SectionTitle>How I Can Help You</SectionTitle>
 
   <div
-    class="md:flex sm:gap-8 gap-4 flex flex-col md:flex-row sm:grid grid-cols-2"
+    class="md:flex sm:gap-8 gap-4 flex flex-col md:flex-row flex-wrap sm:grid grid-cols-2"
   >
     {
       items.map((i) => {
