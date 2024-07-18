@@ -55,6 +55,7 @@ const lang = getLangFromUrl(Astro.url);
         color: rgb(var(--foreground));
         background-color: rgb(var(--background));
         transition: all 0.2s ease-in-out;
+        scroll-behavior: smooth;
 
         &.dark {
           --background: 27, 27, 27;
@@ -65,9 +66,51 @@ const lang = getLangFromUrl(Astro.url);
         }
       }
 
+      .fade-in-card {
+        @apply translate-y-[10%] invisible opacity-0;
+        will-change: transform, opacity, visibility;
+      }
+
       .transparent-card {
         @apply rounded-sm border backdrop-blur-[3px] border-border bg-backgroundLifted hover:border-borderHover transition-all;
       }
+
+      .fade-in-card.is-visible {
+        animation: fade-in-from-bottom 500ms ease-in forwards;
+      }
+
+      @keyframes fade-in-from-bottom {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
+      }
     </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const isMobile = window.matchMedia("(max-width: 640px)").matches;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: "0px",
+            threshold: isMobile ? 0.1 : 0.33,
+          }
+        );
+
+        document.querySelectorAll(".fade-in-card").forEach((card) => {
+          observer.observe(card);
+        });
+      });
+    </script>
   </body>
 </html>

@@ -16,7 +16,7 @@ function getLocalDate(date: string) {
 ---
 
 <div class="flex flex-col gap-8 relative">
-  <div class="relative -top-[40px]">
+  <div class="relative -top-[40px] overflow-hidden">
     <DotBackground />
   </div>
   <SectionTitle> Writing </SectionTitle>
@@ -27,7 +27,7 @@ function getLocalDate(date: string) {
         <a
           href={post.data.link}
           target="_blank"
-          class="flex flex-col gap-3 p-4 transparent-card "
+          class="flex flex-col gap-3 p-4 transparent-card fade-in-card"
         >
           <h2 class="text-xl leading-7 font-extrabold flex-1 line-clamp-2">
             {post.data.title}

@@ -3,6 +3,7 @@ import Header from "@components/Header.astro";
 import ContactSection from "@components/sections/ContactSection.astro";
 import HeroSection from "@components/sections/HeroSection.astro";
 import SelectedWorkSection from "@components/sections/SelectedWorkSection.astro";
+import WorkSection from "@components/sections/WorkSection.astro";
 import WritingSection from "@components/sections/WritingSection.astro";
 import Layout from "@layouts/Layout.astro";
 ---
@@ -19,7 +20,7 @@ import Layout from "@layouts/Layout.astro";
     >
       <Header />
 
-      <div class="relative">
+      <div class="relative overflow-hidden">
         <HeroSection />
       </div>
     </div>
@@ -33,12 +34,17 @@ import Layout from "@layouts/Layout.astro";
       }}
     >
       <div
-        class="flex flex-col gap-20 md:gap-32 px-4 sm:px-8 md:max-w-6xl mx-auto mt-32"
+        class="flex flex-col gap-20 md:gap-32 px-4 sm:px-8 md:max-w-6xl mx-auto mt-4 sm:mt-32"
       >
+        <a id="work"> </a>
         <SelectedWorkSection />
 
+        <a id="articles"></a>
         <WritingSection />
 
+        <WorkSection />
+
+        <a id="contact"></a>
         <ContactSection />
       </div>
     </div>

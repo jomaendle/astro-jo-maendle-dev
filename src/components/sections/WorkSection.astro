@@ -1,0 +1,69 @@
+---
+import SectionTitle from "@components/ui/SectionTitle.astro";
+import { getMonthAndYear } from "src/utils/date";
+
+interface WorkItem {
+  name: string;
+  startDate: Date;
+  endDate: Date;
+  title: string;
+  link?: string;
+}
+
+const workItems: WorkItem[] = [
+  {
+    name: "Memberspot",
+    startDate: new Date("2023-08-01"),
+    endDate: new Date("2024-07-31"),
+    title: "Frontend Developer",
+    link: "https://memberspot.de",
+  },
+  {
+    name: "StudySmarter",
+    startDate: new Date("2021-10-01"),
+    endDate: new Date("2023-07-31"),
+    title: "Frontend Developer",
+    link: "https://studysmarter.de",
+  },
+  {
+    name: "Micro Focus",
+    startDate: new Date("2019-10-01"),
+    endDate: new Date("2021-09-30"),
+    title: "Software Designer",
+    link: "https://www.microfocus.com/de-de/home",
+  },
+  {
+    name: "Hewlett Packard Enterprise",
+    startDate: new Date("2016-10-01"),
+    endDate: new Date("2019-09-30"),
+    title: "DualStudy Student",
+    link: "https://hpe.com",
+  },
+];
+---
+
+<div class="flex flex-col gap-8">
+  <SectionTitle>Work</SectionTitle>
+  <div class="flex flex-col divide-y divide-white/20">
+    {
+      workItems.map((item) => (
+        <div class="flex items-center gap-3 py-3">
+          <div class="flex flex-col flex-1 gap-1">
+            <a
+              class="underline underline-offset-2 "
+              href={item.link}
+              target="_blank"
+            >
+              <h3 class="text-xl">{item.name}</h3>
+            </a>
+            <p class="text-secondary">{item.title}</p>
+          </div>
+
+          <p class="text-sm text-secondary">
+            {getMonthAndYear(item.startDate)} - {getMonthAndYear(item.endDate)}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>

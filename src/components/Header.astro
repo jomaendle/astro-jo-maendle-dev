@@ -2,17 +2,48 @@
 
 ---
 
-<header class="flex gap-4 items-center py-6">
+<header class="flex flex-col sm:flex-row gap-4 items-center py-6">
   <p class="flex flex-1 gap-4">
     <span class="text-xl">Johannes Maendle</span>
   </p>
 
-  <nav class="flex items-center gap-6">
-    <a href="/">Work</a>
-    <a href="/about">Articles</a>
-    <a href="/about">Contact</a>
+  <div id="persist-menu"></div>
+  <nav id="menu" class="flex items-center sm:gap-6 gap-10">
+    <a href="#work">Work</a>
+    <a href="#articles">Articles</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // detectt the user scroll.
+    // if the scrolly is greater than 100, add a class to the nav item
+    // if the scrolly is less than 100, remove the class from the nav item
+
+    window.addEventListener("scroll", function () {
+      const nav = document.querySelector("nav#menu");
+      const persistMenu = document.querySelector("div#persist-menu");
+      const classes: string[] = [
+        "p-4",
+        "fixed",
+        "top-0",
+        "bg-black/50",
+        "backdrop-blur-md",
+        "z-50",
+        "w-full",
+        "justify-center",
+      ];
+      if (window.scrollY > 200) {
+        persistMenu.style.height = `${nav.clientHeight}px`;
+        nav.classList.add(...classes);
+      } else {
+        nav.classList.remove(...classes);
+        persistMenu.style.height = "0px";
+      }
+    });
+  });
+</script>
 
 <!-- <LanguagePicker /> -->
 <!-- <ThemeToggle /> -->
