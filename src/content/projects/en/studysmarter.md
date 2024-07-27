@@ -2,8 +2,8 @@
 title: "Accelerate your learning"
 role: "Frontend Developer"
 company: "StudySmarter"
-startDate: 10/01/2021
-endDate: 07/30/2023
+startDate: 2021-10-01
+endDate: 2023-07-30
 aboutCompany: "StudySmarter is a Munich-based EdTech startup that offers a platform for students to create, share, and learn from digital flashcards."
 techStack: ["Angular", "TypeScript", "RxJS", "NgRx", "Jest", "Cypress"]
 coverImage: "../studysmarter/stsm.png"

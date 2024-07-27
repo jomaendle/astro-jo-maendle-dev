@@ -38,16 +38,23 @@ function mapIndexToCorner(index: number) {
 
   <div class="flex flex-col gap-16 h-full overflow-y-scroll">
     {
-      workItems.map((i: WorkItem, index) => (
-        <SelectedWorkItem
-          item={i}
-          style={{
-            backgroundImage: `radial-gradient(circle at ${mapIndexToCorner(index)}, rgb(var(--bg-radial-color-1)), rgba(182, 89, 255, 0) 50%)`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-          }}
-        />
-      ))
+      workItems
+        .sort((a, b) => {
+          const aDate = new Date(a.data.startDate).getTime();
+          const bDate = new Date(b.data.startDate).getTime();
+
+          return bDate - aDate;
+        })
+        .map((i: WorkItem, index) => (
+          <SelectedWorkItem
+            item={i}
+            style={{
+              backgroundImage: `radial-gradient(circle at ${mapIndexToCorner(index)}, rgb(var(--bg-radial-color-1)), rgba(182, 89, 255, 0) 50%)`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}
+          />
+        ))
     }
   </div>
 </div>

@@ -2,7 +2,8 @@
 title: "Community-driven online classes"
 role: "Frontend Developer"
 company: "Memberspot"
-startDate: 08/01/2023
+startDate: 2023-08-01
+endDate: 2024-07-31
 aboutCompany: "Memberspot is a Ludwigsburg-based startup that offers a platform for to create and distribute online classes and connect with their members."
 techStack: ["Angular", "TypeScript", "NestJS", "ngneat", "tanstack"]
 coverImage: "../mspot/cover.png"

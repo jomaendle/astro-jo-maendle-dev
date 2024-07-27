@@ -20,7 +20,7 @@ const { item, ...props } = Astro.props;
     <header class="w-full flex flex-col items-center sm:flex-row gap-2">
       <p class="flex-1 text-lg">{item.data.company}</p>
 
-      <p class="text-secondary">
+      <p class="text-secondary text-sm md:text-base">
         {getMonthAndYear(item.data.startDate)} -{" "}
         {getMonthAndYear(item.data.endDate) ?? "Present"}
       </p>
@@ -60,15 +60,15 @@ const { item, ...props } = Astro.props;
     </div>
 
     <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-12">
-      <div class="col-span-2">
+      <InfoItem title="Role" subtitle={item.data.role} />
+      <div class="col-span-2 md:col-span-3">
         <InfoItem title="About" subtitle={item.data.aboutCompany ?? ""} />
       </div>
-      <InfoItem title="Role" subtitle={item.data.role} />
     </div>
 
     {
       item.data.projectLink && (
-        <div class="flex w-full">
+        <div class="flex w-full gap-2">
           <a
             target="_blank"
             href={item.data.projectLink}
@@ -82,6 +82,22 @@ const { item, ...props } = Astro.props;
               Open
             </Button>
           </a>
+
+          {item.data.githubLink && (
+            <a
+              target="_blank"
+              href={item.data.githubLink}
+              class="w-full sm:w-auto"
+            >
+              <Button
+                size="medium"
+                variant="tertiary"
+                class="w-full sm:w-auto min-w-[120px] border-white/20 hover:border-white/50"
+              >
+                GitHub
+              </Button>
+            </a>
+          )}
         </div>
       )
     }

@@ -12,15 +12,13 @@ const workProjects = defineCollection({
       description: z.string(),
       coverImage: image(),
       additionalImages: z.array(image()).optional(),
-      startDate: z.string().transform((val) => new Date(val).toDateString()),
-      endDate: z
-        .string()
-        .transform((val) => new Date(val).toDateString())
-        .optional(),
+      startDate: z.date(),
+      endDate: z.date().optional(),
       role: z.string(),
       techStack: z.array(z.string()),
       projectLink: z.string().optional(),
       aboutCompany: z.string().optional(),
+      githubLink: z.string().optional(),
     }),
 });
 
