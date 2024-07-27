@@ -1,6 +1,7 @@
 ---
-title: "Outdoor and portrait photography"
+title: "Portrait photography"
 role: "Founder, Photographer"
+company: "Jo Maendle Photography"
 startDate: 01/01/2024
 aboutCompany: "Jo Maendle Photography is a photography business that specializes in outdoor portrait and landscape photography."
 techStack: ["Astro", "Netlify", "Adobe Photoshop"]

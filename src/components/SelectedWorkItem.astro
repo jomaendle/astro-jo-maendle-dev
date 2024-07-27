@@ -13,35 +13,27 @@ interface Props extends HTMLAttributes<"div"> {
 const { item, ...props } = Astro.props;
 ---
 
-<div class="flex flex-col gap-12 fade-in-card" {...props}>
-  <div class="md:p-12 p-6 transparent-card flex flex-col gap-12 w-full">
-    <header class="w-full flex flex-col sm:flex-row gap-4">
-      <div class="flex-1">
-        <Image
-          src={item.data.logoImage}
-          alt={item.data.title}
-          class="h-12 w-auto object-contain dark:filter dark:invert"
-        />
-      </div>
+<div class="flex flex-col gap-6 md:gap-10 fade-in-card" {...props}>
+  <div
+    class="md:p-10 p-6 transparent-card flex flex-col gap-6 md:gap-10 w-full"
+  >
+    <header class="w-full flex flex-col items-center sm:flex-row gap-4">
+      <p class="flex-1 text-lg">{item.data.company}</p>
 
       <p class="text-secondary mt-2">
         {getMonthAndYear(item.data.startDate)} -{" "}
         {getMonthAndYear(item.data.endDate) ?? "Present"}
       </p>
     </header>
-    <div class="flex flex-col gap-2">
-      <h2 class="md:text-5xl text-3xl font-extrabold mt-4">
-        {item.data.title}
-      </h2>
-      <p class="md:text-xl mt-2 sm:max-w-[580px] text-pretty">
-        {item.data.description}
-      </p>
-    </div>
-    <main class="flex flex-col">
+    <h2 class="md:text-3xl text-2xl font-bold">
+      {item.data.title}.
+    </h2>
+
+    <main class="flex flex-col gap-4">
       <Image
         src={item.data.coverImage}
         alt={item.data.title}
-        class="w-full object-contain rounded-xl"
+        class="w-full object-contain rounded-xl max-h-96"
       />
     </main>
 
@@ -55,7 +47,7 @@ const { item, ...props } = Astro.props;
       }
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-12">
       <div class="col-span-2">
         <InfoItem title="About" subtitle={item.data.aboutCompany ?? ""} />
       </div>

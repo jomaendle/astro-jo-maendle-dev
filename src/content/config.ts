@@ -8,6 +8,7 @@ const workProjects = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      company: z.string(),
       description: z.string(),
       logoImage: image(),
       coverImage: image(),

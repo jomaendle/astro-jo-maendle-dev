@@ -33,10 +33,10 @@ function mapIndexToCorner(index: number) {
 }
 ---
 
-<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-8 h-full overflow-hidden">
   <SectionTitle> Selected Work </SectionTitle>
 
-  <div class="flex flex-col gap-16">
+  <div class="flex flex-col gap-16 h-full overflow-y-scroll">
     {
       workItems.map((i: WorkItem, index) => (
         <SelectedWorkItem
