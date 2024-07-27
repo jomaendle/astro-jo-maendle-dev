@@ -17,24 +17,36 @@ const { item, ...props } = Astro.props;
   <div
     class="md:p-10 p-6 transparent-card flex flex-col gap-6 md:gap-10 w-full"
   >
-    <header class="w-full flex flex-col items-center sm:flex-row gap-4">
+    <header class="w-full flex flex-col items-center sm:flex-row gap-2">
       <p class="flex-1 text-lg">{item.data.company}</p>
 
-      <p class="text-secondary mt-2">
+      <p class="text-secondary">
         {getMonthAndYear(item.data.startDate)} -{" "}
         {getMonthAndYear(item.data.endDate) ?? "Present"}
       </p>
     </header>
-    <h2 class="md:text-3xl text-2xl font-bold">
+    <h2 class="md:text-3xl text-2xl text-center sm:text-start font-bold">
       {item.data.title}.
     </h2>
 
-    <main class="flex flex-col gap-4">
-      <Image
-        src={item.data.coverImage}
-        alt={item.data.title}
-        class="w-full object-contain rounded-xl max-h-96"
-      />
+    <main class="flex overflow-x-auto snap-x snap-mandatory gap-4">
+      {
+        (
+          <>
+            {[item.data.coverImage, ...(item.data.additionalImages ?? [])].map(
+              (img, index) => (
+                <Image
+                  src={img}
+                  alt={item.data.title}
+                  class={`w-full object-contain rounded-xl max-h-96 snap-always snap-center ${
+                    index === 0 ? "md:col-span-2" : ""
+                  }`}
+                />
+              )
+            )}
+          </>
+        )
+      }
     </main>
 
     <div class="flex gap-3 flex-wrap">

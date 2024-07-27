@@ -10,8 +10,8 @@ const workProjects = defineCollection({
       title: z.string(),
       company: z.string(),
       description: z.string(),
-      logoImage: image(),
       coverImage: image(),
+      additionalImages: z.array(image()).optional(),
       startDate: z.string().transform((val) => new Date(val).toDateString()),
       endDate: z
         .string()
