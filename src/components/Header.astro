@@ -1,5 +1,5 @@
 ---
-
+import MobileMenu from "./MobileMenu.astro";
 ---
 
 <style>
@@ -24,47 +24,35 @@
     <span class="text-xl">Johannes Maendle</span>
   </p>
 
-  <div id="persist-menu"></div>
   <nav id="menu" class="flex items-center sm:gap-6 gap-10 transition-none">
     <a href="#work">Work</a>
     <a href="#articles">Articles</a>
     <a href="#contact">Contact</a>
   </nav>
+
+  <MobileMenu />
 </header>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    window.addEventListener("scroll", () => {
-      const isMobile = window.matchMedia("(max-width: 640px)").matches;
-      const nav = document.querySelector("nav#menu");
-      const persistMenu = document.querySelector(
-        "div#persist-menu"
-      ) as HTMLDivElement | null;
-      const classes: string[] = [
-        "p-4",
-        "fixed",
-        "top-8",
-        "bg-black/60",
-        "backdrop-blur-lg",
-        "z-50",
-        "w-[calc(100%-4rem)]",
-        "justify-center",
-        "rounded-full",
-        "fade-in",
-        "border",
-        "border-border",
-      ];
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-      if (!persistMenu || !nav || !isMobile) return;
+  gsap.registerPlugin(ScrollTrigger);
 
-      if (window.scrollY > 200) {
-        persistMenu.style.height = `${nav.clientHeight}px`;
-        nav.classList.add(...classes);
-      } else {
-        nav.classList.remove(...classes);
-        persistMenu.style.height = "0px";
-      }
-    });
+  const menu = document.getElementById("mobile-menu");
+
+  gsap.set(menu, { y: "50%", autoAlpha: 0, scale: 0.8 });
+
+  gsap.to(menu, {
+    y: 0,
+    scale: 1,
+    autoAlpha: 1,
+    duration: 0.3,
+    scrollTrigger: {
+      trigger: menu,
+      start: "120px top",
+      scrub: 1,
+    },
   });
 </script>
 
