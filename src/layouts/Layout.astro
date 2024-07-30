@@ -49,6 +49,9 @@ const lang = getLangFromUrl(Astro.url);
 
         --bg-radial-color-1: 0 75 221 / 37%;
         --bg-radial-color-2: 119 20 151 / 32%;
+
+        --scrollbarBG: #2a2a2b;
+        --thumbBG: #828181;
       }
       html {
         font-family: "Outfit", system-ui, sans-serif;
@@ -64,6 +67,22 @@ const lang = getLangFromUrl(Astro.url);
           --foreground: 255, 255, 255;
           --forground-deemphasized: 180, 180, 180;
         }
+      }
+
+      ::-webkit-scrollbar {
+        width: 11px;
+      }
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--scrollbarBG);
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: var(--thumbBG);
+        border-radius: 6px;
+        border: 3px solid var(--scrollbarBG);
       }
 
       html.lenis,

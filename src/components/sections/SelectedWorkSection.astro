@@ -6,17 +6,6 @@ import SectionTitle from "../ui/SectionTitle.astro";
 const workItems = await getCollection("projects");
 type WorkItem = (typeof workItems)[0];
 
-function getMonthAndYear(date: string | undefined) {
-  if (!date) {
-    return null;
-  }
-
-  const d = new Date(date);
-  return (
-    d.toLocaleString("default", { month: "short" }) + " " + d.getFullYear()
-  );
-}
-
 function mapIndexToCorner(index: number) {
   switch (index) {
     case 0:
@@ -36,7 +25,7 @@ function mapIndexToCorner(index: number) {
 <div class="flex flex-col gap-8 h-full overflow-hidden">
   <SectionTitle> Selected Work </SectionTitle>
 
-  <div class="flex flex-col gap-16 h-full overflow-y-scroll">
+  <div class="flex flex-col gap-16">
     {
       workItems
         .sort((a, b) => {
