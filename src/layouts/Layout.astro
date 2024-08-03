@@ -111,40 +111,6 @@ const lang = getLangFromUrl(Astro.url);
       }
     </style>
 
-    <script>
-      import gsap from "gsap";
-      import Lenis from "lenis";
-
-      import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-      const lenis = new Lenis();
-
-      lenis.on("scroll", ScrollTrigger.update);
-
-      gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-      });
-
-      gsap.ticker.lagSmoothing(0);
-
-      gsap.registerPlugin(ScrollTrigger);
-
-      const cards = gsap.utils.toArray<HTMLElement>(".fade-in-card");
-      cards.forEach((card) => {
-        gsap.set(card, { y: "20%", autoAlpha: 0, scale: 0.9 });
-
-        gsap.to(card, {
-          y: 0,
-          scale: 1,
-          autoAlpha: 1,
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: card,
-            start: "top 80%",
-            invalidateOnRefresh: true,
-          },
-        });
-      });
-    </script>
+    <script src="../utils/animations.ts"></script>
   </body>
 </html>

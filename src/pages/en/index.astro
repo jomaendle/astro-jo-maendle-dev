@@ -1,5 +1,6 @@
 ---
 import Header from "@components/Header.astro";
+import AboutMeSection from "@components/sections/AboutMeSection.astro";
 import ContactSection from "@components/sections/ContactSection.astro";
 import HeroSection from "@components/sections/HeroSection.astro";
 import SelectedWorkSection from "@components/sections/SelectedWorkSection.astro";
@@ -42,21 +43,25 @@ import Layout from "@layouts/Layout.astro";
       }}
     >
       <div class="px-4 sm:px-8 md:max-w-4xl lg:max-w-5xl mx-auto">
-        <section>
+        <section class="link-section">
           <a id="work"></a>
           <SelectedWorkSection />
         </section>
 
         <section>
+          <AboutMeSection />
+        </section>
+
+        <section class="link-section">
           <a id="articles"></a>
           <WritingSection />
         </section>
 
-        <section>
+        <section class="link-section">
           <WorkSection />
         </section>
 
-        <section>
+        <section class="link-section">
           <a id="contact"></a>
           <ContactSection />
         </section>

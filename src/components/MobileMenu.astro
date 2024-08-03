@@ -6,17 +6,23 @@
   nav > a {
     z-index: 50;
   }
+
+  .nav-item {
+    @apply py-2 px-4 rounded-full transition-colors duration-500;
+  }
+
+  .nav-item.active {
+    @apply bg-white/10;
+  }
 </style>
 
 <nav
   id="mobile-menu"
-  class="sm:hidden flex items-center sm:gap-6 gap-10 mx-auto fixed p-4 top-8 bg-black/60 backdrop-blur-lg z-50 w-[calc(100%-4rem)] justify-center rounded-full border left-0 right-0 border-border"
+  class="sm:hidden flex items-center gap-1 py-1 mx-auto fixed top-8 bg-black/60 backdrop-blur-lg z-50 w-[calc(100%-4rem)] justify-center rounded-full border left-0 right-0 border-border"
 >
-  <a href="#work">Work</a>
-  <a href="#articles">Articles</a>
-  <a href="#contact">Contact</a>
+  <a href="#work" class="nav-item">Work</a>
+  <a href="#articles" class="nav-item">Articles</a>
+  <a href="#contact" class="nav-item">Contact</a>
 </nav>
 
-<script>
-  // if the current url has a fragment, mark the respective nav item as active
-</script>
+<script src="../utils/nav-scroll.ts"></script>

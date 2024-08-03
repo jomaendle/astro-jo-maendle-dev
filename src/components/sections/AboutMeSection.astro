@@ -1,0 +1,76 @@
+---
+import SectionTitle from "@components/ui/SectionTitle.astro";
+import { Image } from "astro:assets";
+import me from "../../assets/jo.jpg";
+
+import angular from "../../assets/angular.png";
+import react from "../../assets/react.png";
+import ts from "../../assets/ts.png";
+
+const TECH_STACK_IMAGE_SIZE = 32;
+
+const techStack = [
+  {
+    name: "Angular",
+    src: angular,
+  },
+  {
+    name: "React",
+    src: react,
+  },
+  {
+    name: "TypeScript",
+    src: ts,
+  },
+];
+---
+
+<style>
+  .tech-stack > img {
+    @apply aspect-square object-contain;
+  }
+</style>
+
+<div class="flex flex-col items-center gap-4">
+  <SectionTitle> About Me </SectionTitle>
+  <Image
+    class="rounded-full object-contain"
+    src={me}
+    width={120}
+    height={120}
+    quality={95}
+    alt="Jo Maendle"
+  />
+
+  <p>
+    My name is Johannes Maendle, and I am a full-stack JavaScript developer.
+  </p>
+  <p>
+    I've been working in the industry for over 5 years, and I've had the
+    pleasure of working with some amazing companies.
+  </p>
+
+  <p>
+    I specialize in creating seamless, scalable, and user-driven applications
+    for modern businesses using the tech stack that best fits the project's
+    requirements.
+  </p>
+  <p>
+    I am passionate about building products that provide value to users and help
+    businesses grow.
+  </p>
+
+  <div class="flex gap-3 tech-stack">
+    {
+      techStack.map((tech) => (
+        <Image
+          src={tech.src}
+          width={TECH_STACK_IMAGE_SIZE}
+          height={TECH_STACK_IMAGE_SIZE}
+          quality={95}
+          alt={tech.name}
+        />
+      ))
+    }
+  </div>
+</div>
