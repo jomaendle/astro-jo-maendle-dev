@@ -33,14 +33,23 @@ import { Icon } from "astro-icon/components";
     <div class="h-[1px] w-10 bg-gray-100/50"></div>
   </div>
 
-  <form method="post" name="contact" hidden data-netlify="true" netlify-honeypot="bot-field">
+  <form
+    method="post"
+    name="contact"
+    hidden
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+  >
     <input placeholder="Enter your name" name="name" required />
     <input placeholder="Enter your email" name="email" type="email" required />
-    <textarea class="min-h-[100px]" name="message" placeholder="Enter your message"></textarea>
+    <textarea
+      class="min-h-[100px]"
+      name="message"
+      placeholder="Enter your message"></textarea>
   </form>
 
   <contact-form>
-    <form class="flex flex-col gap-4 text-start">
+    <form class="flex flex-col gap-4 text-start" name="contact" method="post">
       <h3 class="text-lg text-center">Send a Message</h3>
       <div class="flex flex-col gap-4 md:grid grid-cols-2">
         <label for="name" class="block text-secondary">
