@@ -1,4 +1,5 @@
 ---
+import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
 import AboutMeSection from "@components/sections/AboutMeSection.astro";
 import ContactSection from "@components/sections/ContactSection.astro";
@@ -13,6 +14,22 @@ import Layout from "@layouts/Layout.astro";
 <style>
   section {
     @apply mt-20 md:mt-32;
+  }
+
+  @media screen(md) {
+    .contact-bg {
+      border: solid 1px rgba(var(--border));
+      background-image: radial-gradient(
+          circle at -14%,
+          rgb(var(--bg-radial-color-1)) 0,
+          transparent 39%
+        ),
+        radial-gradient(
+          circle at 120%,
+          rgb(var(--bg-radial-color-2)) 0,
+          transparent 74%
+        );
+    }
   }
 </style>
 
@@ -62,22 +79,13 @@ import Layout from "@layouts/Layout.astro";
           <WorkSection />
         </section>
 
-        <section class="link-section">
+        <section class="link-section py-8 contact-bg">
           <a id="contact"></a>
           <ContactSection />
         </section>
       </div>
     </div>
 
-    <footer>
-      <div class="flex flex-col gap-4 items-center py-8">
-        <p class="text-secondary text-sm">
-          © {new Date().getFullYear()} Johannes Maendle.
-        </p>
-        <p class="text-secondary text-xs">
-          Built with Astro, Tailwind CSS, and &#9829;
-        </p>
-      </div>
-    </footer>
+    <Footer />
   </div>
 </Layout>

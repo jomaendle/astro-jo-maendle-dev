@@ -2,21 +2,7 @@
 import SectionTitle from "@components/ui/SectionTitle.astro";
 
 import Card from "../ui/Card.astro";
-
-const items = [
-  {
-    title: "Custom Web App Development",
-    subtitle: "Angular, React, and more",
-  },
-  {
-    title: "User Experience Enhancement",
-    subtitle: "Elevate your UX",
-  },
-  {
-    title: "Collaborative Development",
-    subtitle: "Working with your team",
-  },
-];
+import { SERVICES } from "@components/services";
 ---
 
 <div class="flex flex-col gap-6 mt-20 md:mt-28">
@@ -26,18 +12,52 @@ const items = [
     class="md:flex sm:gap-8 gap-4 flex flex-col md:flex-row flex-wrap sm:grid grid-cols-2"
   >
     {
-      items.map((i) => {
+      SERVICES.map((i) => {
         return (
           <Card title={i.title} subtitle={i.subtitle}>
-            <div class="flex gap-2 pt-8">
-              <a href="#" class="text-primary flex-1">
-                Learn more
-              </a>{" "}
-              <span class="text-xl">&rarr;</span>
-            </div>
+            <link-prefill data-id={i.id}>
+              <a
+                href="#contact"
+                class="text-primary hover:text-secondary flex-1"
+              >
+                <div class="flex gap-2 pt-8">
+                  {i.cta} <span class="text-xl">&rarr;</span>
+                </div>
+              </a>
+            </link-prefill>
           </Card>
         );
       })
     }
   </div>
 </div>
+
+<script>
+  import { SERVICES } from "@components/services";
+
+  class LinkPrefill extends HTMLElement {
+    constructor() {
+      super();
+
+      const link = this.querySelector("a");
+      link?.addEventListener("click", () => {
+        window.dispatchEvent(
+          new CustomEvent("prefill", {
+            detail: {
+              ...SERVICES.find((i) => i.id === Number(this.dataset["id"])),
+            },
+          })
+        );
+      });
+    }
+
+    disconnectedCallback() {
+      const link = this.querySelector("a");
+      link?.removeEventListener("click", () => {
+        console.log("removed", this.dataset["id"]);
+      });
+    }
+  }
+
+  customElements.define("link-prefill", LinkPrefill);
+</script>

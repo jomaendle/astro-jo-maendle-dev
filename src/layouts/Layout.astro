@@ -52,6 +52,9 @@ const lang = getLangFromUrl(Astro.url);
 
         --scrollbarBG: #2a2a2b;
         --thumbBG: #828181;
+
+        --border: 0, 0, 0, 0.1;
+        --borderHover: 0, 0, 0, 0.2;
       }
       html {
         font-family: "Outfit", system-ui, sans-serif;
@@ -67,6 +70,8 @@ const lang = getLangFromUrl(Astro.url);
           --background-lifted-emphasized: 42, 42, 42;
           --foreground: 255, 255, 255;
           --forground-deemphasized: 180, 180, 180;
+          --border: 255, 255, 255, 0.3;
+          --border-hover: 255, 255, 255, 0.6;
         }
       }
 
@@ -110,11 +115,11 @@ const lang = getLangFromUrl(Astro.url);
       input[type="text"],
       input[type="email"],
       textarea {
-        @apply w-full p-2 bg-backgroundLiftedEmphasized text-foreground rounded-sm border border-border focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+        @apply w-full p-2 bg-[rgba(0,0,0,0.25)] text-foreground rounded-sm border border-border focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
       }
 
       .transparent-card {
-        @apply rounded-sm border backdrop-blur-[3px] border-border bg-backgroundLifted hover:border-borderHover transition-colors;
+        @apply rounded-sm border backdrop-blur-[3px] border-border bg-backgroundLifted transition-colors;
       }
     </style>
 

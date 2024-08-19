@@ -1,6 +1,7 @@
 ---
 import Button from "@components/ui/Button.astro";
 import SectionTitle from "@components/ui/SectionTitle.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <style>
@@ -10,47 +11,114 @@ import SectionTitle from "@components/ui/SectionTitle.astro";
   }
 </style>
 
-<div class="flex flex-col gap-8 mb-12 sm:max-w-xl mx-auto sm:text-center">
+<div class="flex flex-col gap-8 sm:max-w-2xl mx-auto text-center">
   <SectionTitle> Contact </SectionTitle>
-
-  <form class="flex flex-col gap-4 text-start">
-    <label for="name" class="block text-secondary">
-      Name
-
-      <input
-        type="text"
-        id="name"
-        name="name"
-        placeholder="John Doe"
-        class="w-full"
-        required
-      />
-    </label>
-
-    <label for="email" class="block text-secondary">
-      Email
-
-      <input
-        type="email"
-        id="email"
-        placeholder="john.doe@mail.com"
-        name="email"
-        class="w-full"
-        required
-      /></label
+  <div class="flex items-center self-center">
+    <a
+      href="https://cal.com/jomaendle/"
+      class=""
+      target="_blank"
+      rel="noopener noreferrer"
     >
+      <Button variant="tertiary" size="medium" class="flex gap-2 items-center">
+        <Icon name="clarity:phone-handset-line" class="text-lg" />
+        Schedule a Call
+      </Button>
+    </a>
+  </div>
 
-    <label for="message" class="block text-secondary">
-      Message
-      <textarea
-        id="message"
-        name="message"
-        placeholder="Hey Jo, I'd like to work with you on a project. Can we schedule a call?"
-        class="w-full"
-        rows="6"
-        required></textarea>
-    </label>
+  <div class="flex gap-2 items-center self-center my-4">
+    <div class="h-[1px] w-10 bg-gray-100/50"></div>
+    <span>or</span>
+    <div class="h-[1px] w-10 bg-gray-100/50"></div>
+  </div>
 
-    <Button size="medium" variant="secondary" type="submit"> Send </Button>
+  <form method="post" name="contact" hidden data-netlify="true" netlify-honeypot="bot-field">
+    <input placeholder="Enter your name" name="name" required />
+    <input placeholder="Enter your email" name="email" type="email" required />
+    <textarea class="min-h-[100px]" name="message" placeholder="Enter your message"></textarea>
   </form>
+
+  <contact-form>
+    <form class="flex flex-col gap-4 text-start">
+      <h3 class="text-lg text-center">Send a Message</h3>
+      <div class="flex flex-col gap-4 md:grid grid-cols-2">
+        <label for="name" class="block text-secondary">
+          Name
+
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="John Doe"
+            class="w-full"
+            required
+          />
+        </label>
+
+        <label for="email" class="block text-secondary">
+          Email
+
+          <input
+            type="email"
+            id="email"
+            placeholder="john.doe@mail.com"
+            name="email"
+            class="w-full"
+            required
+          /></label
+        >
+      </div>
+
+      <label for="message" class="block text-secondary">
+        Message
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Hey Jo, I'd like to work with you on a project. Can we schedule a call?"
+          class="w-full"
+          rows="6"
+          required></textarea>
+      </label>
+
+      <div class="flex w-full justify-end">
+        <Button
+          size="medium"
+          variant="tertiary"
+          class="w-full sm:w-auto min-w-[120px]"
+          type="submit"
+        >
+          Send
+        </Button>
+      </div>
+    </form>
+  </contact-form>
 </div>
+
+<script>
+  import type { ServiceItem } from "@components/services";
+
+  class ContactForm extends HTMLElement {
+    constructor() {
+      super();
+
+      const messageForm = this.querySelector("#message") as HTMLTextAreaElement;
+
+      window.addEventListener("prefill", (e: CustomEvent<ServiceItem>) => {
+        const details = e.detail;
+
+        if (details) {
+          messageForm.value = `Hey Jo,
+
+I'd like to work with you on a project. I'm interested in the ${details.title} service.
+Can we schedule a call to discuss further?
+
+Best,
+          `;
+        }
+      });
+    }
+  }
+
+  customElements.define("contact-form", ContactForm);
+</script>
