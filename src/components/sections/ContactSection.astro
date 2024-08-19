@@ -40,16 +40,16 @@ import { Icon } from "astro-icon/components";
     data-netlify="true"
     netlify-honeypot="bot-field"
   >
-    <input placeholder="Enter your name" name="name" required />
-    <input placeholder="Enter your email" name="email" type="email" required />
+    <input placeholder="John Doe" name="name" required />
+    <input placeholder="john.doe@mail.com" name="email" type="email" required />
     <textarea
-      class="min-h-[100px]"
       name="message"
-      placeholder="Enter your message"></textarea>
+      placeholder="Hey Jo, I'd like to work with you on a project. Can we schedule a call?"
+    ></textarea>
   </form>
 
   <contact-form>
-    <form class="flex flex-col gap-4 text-start" name="contact" method="post">
+    <form class="flex flex-col gap-4 text-start" name="contact">
       <h3 class="text-lg text-center">Send a Message</h3>
       <div class="flex flex-col gap-4 md:grid grid-cols-2">
         <label for="name" class="block text-secondary">
@@ -112,6 +112,9 @@ import { Icon } from "astro-icon/components";
       super();
 
       const messageForm = this.querySelector("#message") as HTMLTextAreaElement;
+
+      const form = this.querySelector("form") as HTMLFormElement;
+      form.addEventListener("submit", (c) => console.log("SUBMIT: ", c));
 
       window.addEventListener("prefill", (e: CustomEvent<ServiceItem>) => {
         const details = e.detail;
