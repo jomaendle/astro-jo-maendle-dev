@@ -3,12 +3,8 @@
 ---
 
 <style>
-  nav > a {
-    z-index: 50;
-  }
-
   .nav-item {
-    @apply py-2 px-4 rounded-full transition-colors duration-500;
+    @apply py-2 px-4 rounded-full transition-colors duration-500 z-50;
   }
 
   .nav-item.active {
@@ -18,9 +14,10 @@
 
 <nav
   id="mobile-menu"
-  class="sm:hidden flex items-center gap-1 py-1 mx-auto fixed top-8 bg-black/60 backdrop-blur-lg z-50 w-[calc(100%-4rem)] justify-center rounded-full border left-0 right-0 border-border"
+  class="sm:hidden flex items-center gap-1 py-1 mx-auto fixed text-sm top-8 bg-black/60 backdrop-blur-lg z-40 w-[calc(100%-2rem)] justify-center rounded-full border left-0 right-0 border-border"
 >
   <a href="#work" class="nav-item">Work</a>
+  <a href="#about" class="nav-item">About</a>
   <a href="#articles" class="nav-item">Articles</a>
   <a href="#contact" class="nav-item">Contact</a>
 </nav>

@@ -1,9 +1,56 @@
 ---
+import Button from "@components/ui/Button.astro";
 import SectionTitle from "@components/ui/SectionTitle.astro";
 ---
 
-<div>
-  <SectionTitle showDivider={true}> Contact </SectionTitle>
+<style>
+  input,
+  textarea {
+    @apply mt-1;
+  }
+</style>
 
-  <form class="my-12">Hello</form>
+<div class="flex flex-col gap-8 mb-12 sm:max-w-xl mx-auto sm:text-center">
+  <SectionTitle> Contact </SectionTitle>
+
+  <form class="flex flex-col gap-4 text-start">
+    <label for="name" class="block text-secondary">
+      Name
+
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="John Doe"
+        class="w-full"
+        required
+      />
+    </label>
+
+    <label for="email" class="block text-secondary">
+      Email
+
+      <input
+        type="email"
+        id="email"
+        placeholder="john.doe@mail.com"
+        name="email"
+        class="w-full"
+        required
+      /></label
+    >
+
+    <label for="message" class="block text-secondary">
+      Message
+      <textarea
+        id="message"
+        name="message"
+        placeholder="Hey Jo, I'd like to work with you on a project. Can we schedule a call?"
+        class="w-full"
+        rows="6"
+        required></textarea>
+    </label>
+
+    <Button size="medium" variant="secondary" type="submit"> Send </Button>
+  </form>
 </div>

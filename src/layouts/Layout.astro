@@ -59,6 +59,7 @@ const lang = getLangFromUrl(Astro.url);
         background-color: rgb(var(--background));
         transition: all 0.2s ease-in-out;
         scroll-behavior: smooth;
+        scroll-padding-top: 6rem;
 
         &.dark {
           --background: 27, 27, 27;
@@ -104,6 +105,12 @@ const lang = getLangFromUrl(Astro.url);
 
       .lenis.lenis-smooth iframe {
         pointer-events: none;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        @apply w-full p-2 bg-backgroundLiftedEmphasized text-foreground rounded-sm border border-border focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
       }
 
       .transparent-card {

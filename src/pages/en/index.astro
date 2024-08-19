@@ -48,7 +48,8 @@ import Layout from "@layouts/Layout.astro";
           <SelectedWorkSection />
         </section>
 
-        <section>
+        <section class="link-section">
+          <a id="about"></a>
           <AboutMeSection />
         </section>
 
@@ -67,5 +68,16 @@ import Layout from "@layouts/Layout.astro";
         </section>
       </div>
     </div>
+
+    <footer>
+      <div class="flex flex-col gap-4 items-center py-8">
+        <p class="text-secondary text-sm">
+          © {new Date().getFullYear()} Johannes Maendle.
+        </p>
+        <p class="text-secondary text-xs">
+          Built with Astro, Tailwind CSS, and &#9829;
+        </p>
+      </div>
+    </footer>
   </div>
 </Layout>
