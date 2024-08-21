@@ -11,17 +11,6 @@ export function sendContactForm(formData: {
   email: string;
   message: string;
 }) {
-  //   const timestamp = localStorage.getItem(TIMESTAMP);
-
-  //   if (timestamp) {
-  //     const diff = Date.now() - parseInt(timestamp, 10);
-  //     if (diff < threeMinutesInMilliseconds) {
-  //       console.error("You can only submit the form once every 5 minutes.");
-  //       return;
-  //     }
-  //   }
-
-  //   localStorage.setItem(TIMESTAMP, Date.now().toString());
   return fetch("/", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },

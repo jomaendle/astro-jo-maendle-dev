@@ -8,12 +8,14 @@ const { title, subtitle } = Astro.props;
 ---
 
 <div
-  class="flex p-6 flex-col w-full group cursor-pointer transparent-card md:max-w-[288px] aspect-[16/5] sm:aspect-[5/4] max-h-[380px] md:max-h-none fade-in-left-card"
+  class="flex p-6 flex-col w-full group cursor-pointer transparent-card gap-2 md:max-w-[288px] aspect-[16/5] sm:aspect-[5/4] max-h-[380px] md:max-h-none fade-in-left-card"
 >
-  <p class="text-sm text-secondary">{subtitle}</p>
-  <h1 class="text-xl leading-6 sm:text-3xl font-bold text-primary mt-1 flex-1">
+  <h1
+    class="text-xl leading-6 sm:leading-8 sm:text-3xl font-bold text-primary mt-1 flex-1"
+  >
     {title}
   </h1>
+  <p class="text-sm text-secondary">{subtitle}</p>
   <div>
     <slot />
   </div>

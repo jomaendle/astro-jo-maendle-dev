@@ -1,6 +1,8 @@
 ---
+import Button from "@components/ui/Button.astro";
 import DotBackground from "@components/ui/DotBackground.astro";
 import SectionTitle from "@components/ui/SectionTitle.astro";
+import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("blog");
@@ -46,6 +48,21 @@ function getLocalDate(date: string) {
           </a>
         ))
     }
+
+    <a
+      href="https://blog.jomaendle.com/"
+      rel="noopener noreferrer"
+      target="_blank"
+      class="fade-in-card"
+    >
+      <Button variant="tertiary" size="medium">
+        <div class="flex items-center gap-2">
+          Read all blog articles
+
+          <span class="text-xl -rotate-45">&rarr;</span>
+        </div>
+      </Button>
+    </a>
   </div>
 </writing-section>
 

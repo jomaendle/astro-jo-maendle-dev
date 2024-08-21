@@ -9,11 +9,12 @@ interface Props extends HTMLAttributes<"button"> {
 const { size, variant, ...props } = Astro.props;
 
 const baseStyle =
-  "rounded-full focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-80 transition duration-200 ease-in-out";
+  "rounded-full focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-80 transition font-semibold duration-200 ease-in-out";
 
 const variantClassResolver = {
   primary: "bg-blue-700 text-white hover:bg-blue-800",
-  secondary: "bg-gray-200 text-gray-800 hover:bg-gray-300",
+  secondary:
+    "bg-gray-100 text-gray-800 border border-transparent hover:bg-gray-300",
   link: "underline hover:text-blue-400",
   icon: "rounded-full",
   tertiary:

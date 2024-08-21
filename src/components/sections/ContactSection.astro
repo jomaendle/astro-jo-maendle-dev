@@ -44,6 +44,8 @@ import { Icon } from "astro-icon/components";
     <input placeholder="john.doe@mail.com" name="email" type="email" required />
     <textarea
       name="message"
+      required
+      rows="8"
       placeholder="Hey Jo, I'd like to work with you on a project. Can we schedule a call?"
     ></textarea>
   </form>
@@ -85,7 +87,7 @@ import { Icon } from "astro-icon/components";
           id="message"
           name="message"
           placeholder="Hey Jo, I'd like to work with you on a project. Can we schedule a call?"
-          class="w-full"
+          class="w-full resize-y"
           rows="6"
           required></textarea>
       </label>
