@@ -106,6 +106,7 @@ import { Icon } from "astro-icon/components";
 
 <script>
   import type { ServiceItem } from "@components/services";
+  import { sendContactForm } from "src/utils/contact-form";
 
   class ContactForm extends HTMLElement {
     constructor() {
@@ -114,7 +115,20 @@ import { Icon } from "astro-icon/components";
       const messageForm = this.querySelector("#message") as HTMLTextAreaElement;
 
       const form = this.querySelector("form") as HTMLFormElement;
-      form.addEventListener("submit", (c) => console.log("SUBMIT: ", c));
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const message = formData.get("message") as string;
+        const name = formData.get("name") as string;
+        const email = formData.get("email") as string;
+
+        if (!message || !name || !email) {
+          alert("Please fill in all fields.");
+          return;
+        }
+
+        sendContactForm({ name, email, message });
+      });
 
       window.addEventListener("prefill", (e: CustomEvent<ServiceItem>) => {
         const details = e.detail;
@@ -123,7 +137,7 @@ import { Icon } from "astro-icon/components";
           messageForm.value = `Hey Jo,
 
 I'd like to work with you on a project. I'm interested in the ${details.title} service.
-Can we schedule a call to discuss further?
+Can you provide me with more information?
 
 Best,
           `;
