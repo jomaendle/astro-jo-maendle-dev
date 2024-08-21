@@ -6,29 +6,34 @@ import me from "../../assets/jo.png";
 ---
 
 <div class="flex flex-col items-center gap-8 fade-in-card">
-  <Image
-    class="rounded-full object-contain w-36 h-36 md:w-44 md:h-44 border-2 shadow-md border-border brightness-90"
-    src={me}
-    width={500}
-    height={500}
-    quality={90}
-    alt="Jo Maendle"
-  />
-  <SectionTitle> Jo Maendle </SectionTitle>
+  <div class="self-start">
+    <SectionTitle> About Me </SectionTitle>
+  </div>
 
-  <div class="text-secondary flex flex-col gap-2 md:max-w-lg md:text-center">
-    <p>
-      I'm a full-stack JavaScript/TypeScript developer based in Bremen, Germany
-      with over 5 years of experience building robust web applications.
-    </p>
-    <p>
-      My expertise primarily lies in Angular and NX, but I've also worked with
-      frameworks like Astro and Next.js.
-    </p>
-    <p>
-      I'm passionate about creating efficient, scalable, and user-friendly web
-      solutions.
-    </p>
+  <div
+    class="transparent-card p-4 flex flex-col sm:grid grid-cols-3 gap-6 w-full"
+  >
+    <Image
+      class="rounded-full object-contain w-36 h-36 border-2 shadow-md border-border brightness-[0.8] self-center justify-self-center"
+      src={me}
+      width={500}
+      height={500}
+      quality={90}
+      alt="Jo Maendle"
+    />
+
+    <div class="text-secondary flex flex-col gap-4 md:max-w-lg col-span-2">
+      <p>
+        I'm a full-stack JavaScript/TypeScript developer based in Bremen,
+        Germany, with over 5 years of experience building reliable web
+        applications. While I specialize in Angular and NX, I’ve also worked
+        with frameworks like Astro and Next.js.
+      </p>
+      <p>
+        I enjoy creating efficient and user-friendly solutions, and I share my
+        knowledge by writing articles online about web development.
+      </p>
+    </div>
   </div>
 
   <div class="flex flex-col gap-8 lg:grid grid-cols-3">
@@ -73,7 +78,10 @@ import me from "../../assets/jo.png";
             Implemented responsive, delightful and cross-browser user interfaces
             with performance in mind
           </li>
-          <li>Utilized Astro for building fast, content-focused websites</li>
+          <li>
+            Utilized Astro for building fast, content-focused websites (like the
+            one you're currently viewing)
+          </li>
           <li>
             Created server-side rendered applications with Next.js for improved
             SEO and performance
