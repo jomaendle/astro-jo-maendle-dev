@@ -118,7 +118,7 @@ import { Icon } from "astro-icon/components";
       const messageForm = this.querySelector("#message") as HTMLTextAreaElement;
 
       const form = this.querySelector("form") as HTMLFormElement;
-      form.addEventListener("submit", (event) => {
+      form.addEventListener("submit", async (event) => {
         event.preventDefault();
         const formData = new FormData(form);
         const message = formData.get("message") as string;
@@ -130,7 +130,7 @@ import { Icon } from "astro-icon/components";
           return;
         }
 
-        sendContactForm({ name, email, message }).then(() => {
+        await sendContactForm({ name, email, message }).then(() => {
           form.reset();
         });
       });
