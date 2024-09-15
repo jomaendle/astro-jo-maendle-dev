@@ -10,10 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.8.3",
+    "@astrojs/check": "^0.9.3",
     "@astrojs/tailwind": "^5.1.0",
     "@iconify-json/clarity": "^1.1.13",
-    "astro": "^4.12.2",
+    "astro": "^4.15.6",
     "astro-icon": "^1.1.0",
     "gsap": "^3.12.5",
     "lenis": "^1.1.8",

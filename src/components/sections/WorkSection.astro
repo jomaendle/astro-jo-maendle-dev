@@ -5,12 +5,18 @@ import { getMonthAndYear } from "src/utils/date";
 interface WorkItem {
   name: string;
   startDate: Date;
-  endDate: Date;
+  endDate?: Date;
   title: string;
   link?: string;
 }
 
 const workItems: WorkItem[] = [
+  {
+    name: "E.ON Digital Technology",
+    startDate: new Date("2024-09-01"),
+    title: "Full Stack Developer",
+    link: "https://www.eon.com/de/ueber-uns.html",
+  },
   {
     name: "Memberspot",
     startDate: new Date("2023-08-01"),
@@ -60,7 +66,8 @@ const workItems: WorkItem[] = [
           </div>
 
           <p class="text-sm text-secondary">
-            {getMonthAndYear(item.startDate)} - {getMonthAndYear(item.endDate)}
+            {getMonthAndYear(item.startDate)} -{" "}
+            {item.endDate ? getMonthAndYear(item.endDate) : "present"}
           </p>
         </div>
       ))
