@@ -1,6 +1,6 @@
 ---
 import { getLangFromUrl } from "@i18n/utils";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 interface Props {
   title: string;
 }
@@ -24,7 +24,7 @@ const lang = getLangFromUrl(Astro.url);
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <slot />
